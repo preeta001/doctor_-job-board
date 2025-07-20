@@ -1,38 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Merriweather:wght@700&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  background: #fafafa;
+  color: #111;
+}
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
+}
+
+.sidebar {
+  width: 260px;
+  height: 100vh;
+  overflow-y: auto;
+  position: fixed;
+  padding: 24px;
+  background: #fff;
+  border-right: 1px solid #e0e0e0;
+}
+
+.nav-item {
+  font-size: 16px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: color 0.3s, font-weight 0.3s;
+}
+.nav-item:hover, .nav-item.active {
+  color: #e91e63;
+  font-weight: 600;
+}
+
+.filters-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 12px;
+}
+
+.clear-text {
+  color: #e91e63;
+  font-size: 15px;
+  cursor: pointer;
+}
+.clear-text:hover {
+  font-weight: bold;
+}
+
+.dropdown-label {
+  font-size: 17px;
+  font-weight: 600;
+  margin-top: 16px;
+}
+
+.dropdown-options label {
+  font-size: 15px;
+  margin: 6px 0;
+  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+.dropdown-options input {
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
 }
 
-.App-link {
-  color: #61dafb;
+.main-content {
+  margin-left: 260px;
+  padding: 38px 38px 38px 68px;  /* ⬅️ added extra left padding */
+  width: calc(100% - 260px);
+  overflow-y: auto;
+  box-sizing: border-box;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;500;600&display=swap');
+
+/* Heading styles */
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem; /* 40px */
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: #2a2a2a;
+  margin-bottom: 1rem;
+  position: relative;
+  text-align: center;
+  line-height: 1.2;
+}
+
+h1::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, #e91e63, #ff9a9e);
+  margin: 1rem auto 0;
+}
+
+.subheading {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem; /* 16px */
+  font-weight: 500;
+  color: #666;
+  text-align: center;
+  letter-spacing: 0.5px;
+  margin-bottom: 2.5rem;
+  text-transform: uppercase;
+}
+
+/* For saved listings section */
+.saved-listings-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem; /* 32px */
+  font-weight: 700;
+  color: #333;
+  margin: 3rem 0 1.5rem;
+  position: relative;
+}
+
+.saved-listings-heading::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 50px;
+  height: 2px;
+  background: #e91e63;
+}
+
+.result-count {
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 24px;
+}
+
+.job-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.job-card {
+  background: #fff;
+  padding: 24px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  min-height: 240px;
+  position: relative;
+  transition: background 0.4s, border-color 0.4s, transform 0.3s;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.job-card:hover {
+  background: linear-gradient(180deg, #fff 0%, #ffeef4 100%);
+  border-color: #e91e63;
+  transform: translateY(-4px);
+}
+
+.job-card h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 8px;
+}
+
+.job-card p {
+  font-size: 14px;
+  margin: 4px 0;
+}
+
+.rating {
+  margin-top: 8px;
+}
+
+.rating svg {
+  width: 16px;
+  height: 16px;
+  fill: #000;
+}
+
+.rating svg.empty {
+  fill: none;
+  stroke: #ccc;
+}
+
+.bookmark-icon {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.job-card:hover .bookmark-icon {
+  opacity: 1;
+}
+
+.bookmark-icon.filled svg {
+  fill: #e91e63;
+  stroke: #e91e63;
 }
